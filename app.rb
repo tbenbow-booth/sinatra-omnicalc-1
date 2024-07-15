@@ -60,16 +60,17 @@ get ("/payment/results") do
 end
 
 #Number Four Option
-get ("/square/new") do
-  erb (:new_square_calc)
+get ("/random/new") do
+  erb (:random_calc)
 end
 
-get ("/square/results") do
-  @the_num = params.fetch("users_number").to_f
+get ("/random/results") do
+  @min = params.fetch("minimum").to_f
+  @max = params.fetch("maximum").to_f
 
-  @the_result = @the_num**2
+  @the_results = rand(@min...@max)
 
-  erb (:square_results)
+  erb (:random_results)
 end
 
 get("/") do
